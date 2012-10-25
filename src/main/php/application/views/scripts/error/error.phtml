@@ -1,0 +1,50 @@
+<? // login/index.phtml ?>
+<? //echo $this->form ?>
+
+  <!-- header ends -->
+  <!-- body starts -->
+      
+  <div class="body-outer">
+    <div class="body">
+    <div class="loginbody">
+    <h1>404 <?= $this->message ?> 
+<br><br>
+                This is probably not the page you were looking for. We are constantly making improvements to the site, and appreciate any <a href="mailto:dev@algorithms.io?subject=Algorithms.IO:%20Problem%20experienced%20with%20site">feedback</a> you have to offer. 
+       </h1> 
+
+     </div>
+    <br> 
+    <br> 
+    <br> 
+
+    <div class="cl"></div>
+<? error_log("ERROR201208160957: ****************************** IN ERROR **********************"); ?>
+<!--
+    <?= $this->exception->getMessage() ?> 
+-->
+
+  <? if ('production' != APPLICATION_ENV): ?> 
+  
+  <h3>Exception information:</h3> 
+  <p> 
+      <b>Message:</b> <?= $this->exception->getMessage() ?> 
+  </p> 
+
+  <h3>Stack trace:</h3> 
+  <pre><?= $this->exception->getTraceAsString() ?> 
+  </pre> 
+
+  <h3>Request Parameters:</h3> 
+  <pre><? var_dump($this->request->getParams()) ?> 
+  </pre> 
+  <? endif ?>
+  <?
+  error_log($this->exception->getMessage());
+  error_log($this->exception->getTraceAsString());
+  error_log(print_r($this->request->getParams(),true));
+  ?>
+      <div class="cl"></div>
+    </div>
+  </div>
+  <!-- body ends -->
+  <!-- footer starts -->

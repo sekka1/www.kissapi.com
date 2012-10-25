@@ -1,0 +1,19 @@
+    <div class="row-fluid">
+    <form id="generate_collage" method="POST" action="/collage/generate">
+
+<?php
+    // Display the user's images
+
+    foreach( $this->mePhotos['data'] as $aPic ){
+
+        echo '<div class="span4">';
+        echo '<img src="' . $aPic['images'][4]['source'] . '"/><br/>';
+//        echo '<input type="checkbox" name="pic[]" value="'.$aPic['id'].'"> Select<br>';
+        echo '<input type="checkbox" name="pic[]" value="'.$aPic['images'][4]['source'] .'"> Select<br>';
+        echo '</div>';
+    }
+
+?>
+    <button class="btn btn-large btn-primary" type="button" href="javascript:void(0);" onclick="$('#generate_collage').submit();">Generate Collage</button>
+    </form>
+    </div>

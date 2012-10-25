@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<localization language="en">
+	<buttons>
+		<nexttext>CONTINUE</nexttext>
+		<skiptext>SKIP WIZARD</skiptext>
+		<backtext>BACK</backtext>
+		<canceltext>CANCEL</canceltext>
+		<closetext>CLOSE</closetext>
+		<savetext>SAVE</savetext>
+                <FindDataSourcetext>Browse Data Sources</FindDataSourcetext>
+		<AddDataSourcetext>Add a Data Source</AddDataSourcetext>
+                <ModifyDataSourcetext>Modify Selected Data Source</ModifyDataSourcetext>
+                <FindVisualizationtext>Browse Visualizations</FindVisualizationtext>
+		<AddVisualizationtext>Create a Visualization</AddVisualizationtext>
+                <ModifyVisualizationtext>Modify Selected Visualization</ModifyVisualizationtext>
+                <FindWorkflowtext>Browse Workflows</FindWorkflowtext>
+		<AddWorkflowtext>Create a Workflow</AddWorkflowtext>
+                <ModifyWorkflowtext>Modify Selected Workflow</ModifyWorkflowtext>
+                <FindAlgorithmtext>Browse Algorithms</FindAlgorithmtext>
+		<AddAlgorithmtext>Create an Algorithm</AddAlgorithmtext>
+                <ModifyAlgorithmtext>Modify Selected Algorithm</ModifyAlgorithmtext>
+                <SaveAlgorithmtext>Save</SaveAlgorithmtext>
+                <ValidateAlgorithmtext>Validate</ValidateAlgorithmtext>
+                <TestAlgorithmtext>Test</TestAlgorithmtext>
+		<AddJobtext>Start a Job</AddJobtext>
+                <StopJobtext>Stop Selected Job</StopJobtext>
+		<EditDashboardtext>Modify Dashboard</EditDashboardtext>
+                <EditPreferencestext>Preferences</EditPreferencestext>
+                <ViewResulttext>View Selected Result</ViewResulttext>
+                <RemoveResulttext>Remove Selected Result</RemoveResulttext>
+                <SaveVisualizationtext>Save</SaveVisualizationtext>
+                <ValidateVisualizationtext>Validate</ValidateVisualizationtext>
+                <TestVisualizationtext>Test</TestVisualizationtext>
+	</buttons>
+	<dashboard>
+		<notices>
+			<credits min='0' max='1'><![CDATA[Sorry, it appears you are all out of credits. If you'd like to juice-up your credits now, please go <a href="/index/pricing">here</a>.]]> </credits>
+			<credits min='2' max='10'><![CDATA[Looks like you are getting low on credits. If you'd like to juice-up your credits now, please go <a href="/index/pricing">here</a>.]]> </credits>
+			<credits min='11' max='100'><![CDATA[Want to juice up your credits? Simply go <a href="/billing/">here</a>.]]> </credits>
+		</notices>
+	</dashboard>
+	<wizard>
+		<navigation>
+			<data_sources>
+				<text>Data Sources</text>
+				<css_class>chevron-darkblue</css_class>
+			</data_sources>
+			<algorithms>
+				<text>Algorithms</text>
+				<css_class>chevron-yellow</css_class>
+			</algorithms>
+			<security_roles>
+				<text>Security Roles</text>
+				<css_class>chevron-orange</css_class>
+			</security_roles>
+			<delivery>
+				<text>Delivery</text>
+				<css_class>chevron-green</css_class>
+			</delivery>
+		</navigation>
+		<introduction>
+			<title>Welcome!</title>
+			<body><![CDATA[It looks like you're new to Algorithms.io. Don't worry, we make working with your data easy. Simply follow this wizard to get started. Here is a quick look at the process:
+]]></body>
+			<test><![CDATA[<h1>HTML GOES HERE</h1>]]></test>
+		</introduction>
+		<data_sources>
+			<datasource_size>
+				<title>Define Your Data Sources</title>
+				<body><![CDATA[Algorithms.io can handle numerous data sources. To start off with, tell us a little about your data:<BR>]]></body>
+			</datasource_size>
+			<datasource_web_upload>
+				<title>Provide Your Data: Web Upload</title>
+				<body><![CDATA[It appears that your data would be best manipulated by transferring directly. Please extract your data into a <a href="">CSV</a> or <a href="">XML</a> file. Next, simply drag the file into this window, or select "Add Data Files".<BR>]]></body>
+			</datasource_web_upload>
+			<datasource_transfer_tool>
+				<title>Provide Your Data: Use the Transfer Tool</title>
+				<body><![CDATA[The transfer tool is designed to send data sets that would be to problematic for web upload. Please select your preferred platform from the list below, download, and then run the tool.<BR>]]></body>
+			</datasource_transfer_tool>
+			<datasource_ODBC>
+				<title>Provide Your Data: Use a ODBC Connection</title>
+				<body><![CDATA[We will attempt to access the data directly using an ODBC connection. This may require some technical assistance from your network administrator in order to allow specific firewall rules to grant access rights to your data. If you are unsure how to proceed, please contact <a href="TEL: +1-703-589-7786">customer support</a>.<BR>]]></body>
+			</datasource_ODBC>
+			<datasource_import_list>
+				<title>Describe Your Data</title>
+				<body><![CDATA[<SPAN class='todo'>TODO: Name, Description, Keywords, Image</SPAN><BR>]]></body>
+			</datasource_import_list>
+			<datasource_complete>
+				<title>Congratulations!</title>
+				<body><![CDATA[Looks like you have successfully created one or more data sources. Next, you can choose from our constantly growing library of algorithms, or create your own.<BR>]]></body>
+			</datasource_complete>
+			<datasource_edit>
+				<title>Editing </title>
+				<body><![CDATA[Please modify the Data Source properties below and then press save to continue.<BR>]]></body>
+			</datasource_edit>
+		</data_sources>
+		<modify_algorithms>
+			<intro>
+				<title>Add or Modify Algorithms</title>
+				<body><![CDATA[Algorithms.io offers a library of over <SPAN class="todo">XXXX</SPAN> predefined algorithms. You can choose from these algorithms, modify them, or create your own. Algorithms may be purchased or available for free. Likewise, you may offer your algorithms for sale or for free. Please note that some algorithms may have special restrictions, such as the inability to view or modify the source, or may not be available to you.<BR>]]></body>
+				<method>
+					<expert_text>I know what I'm doing, take me directly to the editor</expert_text>
+					<novice_text> I'm new and woud like a tutorial</novice_text>
+					<browse_text>I'd like to start by browsing the library</browse_text>
+					<skip_text>I'd like to skip the algorithm wizard</skip_text>
+				</method>
+			</intro>
+			<tutorial>
+				<title>Algorithm Tutorial</title>
+				<body><![CDATA[Sorry! We are busy at work coming up with a tutorial, but we aren't quite finished yet. Please bare with us while we finish this section up.]]></body>
+			</tutorial>
+			<choose_datasource>
+				<title>Choose a Data Source to Work With</title>
+				<body><![CDATA[Please choose a Data Source to work with. Don't worry, your algorithm can work with different Data Sources later, however choosing a Data Source now allows for easy use of data fields in your algorithm.]]></body>
+			</choose_datasource>
+			<editor>
+				<title>Edit an Algorithm</title>
+				<body><![CDATA[<SPAN class="todo">Need Text Here</span>]]></body>
+			</editor>
+			<list>
+				<title>Browse Algorithms</title>
+				<body><![CDATA[Sorry! We are busy at work coming up with a tutorial, but we aren't quite finished yet. Please bare with us while we finish this section up.]]></body>
+			</list>
+			<complete>
+				<title>Congratulations!</title>
+				<body><![CDATA[Now that you have Data Sources and Algorithms to work with, let's setup your Security Roles. Click continue to get started!<BR>]]></body>
+			</complete>
+		</modify_algorithms>
+                <jobs>
+                    <workflow>
+                        <title>Create a Job: Choose Your Workflow</title>
+                        <body>Select the workflow you wish to run:</body>
+                    </workflow>
+                    <properties>
+                        <title>Create a Job: Describe this Job</title>
+                        <body>Enter general information regarding this job below.</body>
+                        <Form>
+                            <Labels>
+                                <Name>Job Name</Name>
+                                <Description>Job Description</Description>
+                                <StartDate>Select the date and time to start</StartDate>
+                            </Labels>
+                            <Buttons>
+                                <DataSourcePopup>Select Data Source</DataSourcePopup>
+                            </Buttons>
+                        </Form>                        
+                    </properties>
+                    <notifications>
+                        <title>Create a Job: Choose How to be Notified</title>
+                        <body>If you wish to be notified when the job has completed, please choose from the following options:</body>
+                        <Form>
+                            <Labels>
+                                <EmailNotification>Receive Email Notification</EmailNotification>
+                                <Email>Email</Email>
+                                <DashboardNotification>Show the status of this job on the dashboard</DashboardNotification>
+                            </Labels>
+                        </Form>
+                    </notifications>
+                </jobs>
+	</wizard>
+        <IDE>
+            <buttons>
+                <StartJobtext>Start a Job Now</StartJobtext>
+            </buttons>
+            <Libraries>
+                <LibraryTitletext>Available Libraries</LibraryTitletext>
+                <InputParamsTitletext>Input Parameters</InputParamsTitletext>
+                <OutputParamsTitletext>Output Parameters</OutputParamsTitletext>
+            </Libraries>
+            <DataSources>
+                <DataSourceListTitle>Choose a Data Source</DataSourceListTitle>
+            </DataSources>
+            <Algorithms>
+                <AlgorithmsListTitle>Choose an Algorithm</AlgorithmsListTitle>
+            </Algorithms>      
+            <Mapper>
+                <MapperTitle>Map and Transform Fields</MapperTitle>
+                <MapperInstructions>Connect dots from the Source to the Destination. Optionally, apply a transformation Reorder the fields found on the left in an order to match the inputs found on the right. Optionally, apply a transformation to the field.</MapperInstructions>
+            </Mapper>
+            <Properties>
+                <Title>Algorithm Properties</Title>
+                <Instructions>Please enter basic information about your algorithm below. Make sure to select a programming language, and a Data Source to test with.</Instructions>
+                <Form>
+                    <Labels>
+                        <Title>Title</Title>
+                        <Description>Description</Description>
+                        <ProgrammingLanguage>Programming Language</ProgrammingLanguage>
+                        <DataSource>Data Source</DataSource>
+                        <inputParamsFromDataSource>Create Input Parameters using the Sample Data Source</inputParamsFromDataSource>
+                        <Tags>Tags</Tags>
+                    </Labels>
+                    <Buttons>
+                        <DataSourcePopup>Select Data Source</DataSourcePopup>
+                    </Buttons>
+                </Form>
+            </Properties>
+            <InputParams>
+                <Title>Modify Input Parameters</Title>
+                <Instructions>Modify the JSON structure below to define the input parameters.</Instructions>
+            </InputParams>
+            <OutputParams>
+                <Title>Modify Output Parameters</Title>
+                <Instructions>Modify the JSON structure below to define the output parameters.</Instructions>
+            </OutputParams>
+        </IDE>
+        <Visualization>
+            <IDE>
+                <Libraries>
+                    <LibraryTitletext>Available Libraries</LibraryTitletext>
+                    <InputParamsTitletext>Input Parameters</InputParamsTitletext>
+                    <OutputParamsTitletext>Output Parameters</OutputParamsTitletext>
+                </Libraries>
+                <DataSources>
+                    <DataSourceListTitle>Choose a Data Source</DataSourceListTitle>
+                </DataSources>     
+                <Properties>
+                    <Title>Visualization Properties</Title>
+                    <Instructions>Please enter basic information about your visualization below. Make sure to select a Sample Data Source to test with.</Instructions>
+                    <Form>
+                        <Labels>
+                            <Title>Title</Title>
+                            <Description>Description</Description>
+                            <ProgrammingLanguage>Programming Language</ProgrammingLanguage>
+                            <DataSource>Data Source</DataSource>
+                            <inputParamsFromDataSource>Create Input Parameters using the Sample Data Source</inputParamsFromDataSource>
+                            <Tags>Tags</Tags>
+                        </Labels>
+                        <Buttons>
+                            <DataSourcePopup>Select Data Source</DataSourcePopup>
+                        </Buttons>
+                    </Form>
+                </Properties>
+                <InputParams>
+                    <Title>Modify Input Parameters</Title>
+                    <Instructions>Modify the JSON structure below to define the input parameters.</Instructions>
+                </InputParams>
+                <OutputParams>
+                    <Title>Modify Output Parameters</Title>
+                    <Instructions>Modify the JSON structure below to define the output parameters.</Instructions>
+                </OutputParams>
+            </IDE>
+        </Visualization>
+        <DataSources>
+            <Properties>
+                <Title>Data Source Properties</Title>
+                <Instructions>Please enter basic information about your Data Source below.</Instructions>
+                <Form>
+                    <Labels>
+                        <Title>Title</Title>
+                        <Description>Description</Description>
+                        <DataSource>Data Source</DataSource>
+                        <Tags>Tags</Tags>
+                    </Labels>
+                    <Buttons>
+                        <DataSourcePopup>Select Data Source</DataSourcePopup>
+                    </Buttons>
+                </Form>
+            </Properties>
+        </DataSources>
+</localization>

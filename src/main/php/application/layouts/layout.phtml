@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>KissAPI</title>
+
+<link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon">
+<link rel="icon" href="/images/icon.ico" type="image/x-icon">
+
+<script type="text/javascript" src="/bootstrap/jquery-latest.js" charset="utf-8"></script>
+
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<div class="layout">
+<!-- header starts -->
+
+<!-- Facebook init -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    // init the FB JS SDK
+    FB.init({
+      appId      : '218727824866208', // App ID from the App Dashboard
+      channelUrl : '//www.kissapi.com/index/channel', // Channel File
+      status     : true, // check the login status upon init?
+      cookie     : true, // set sessions cookies to allow your server to access the session?
+      xfbml      : true  // parse XFBML tags on this page?
+    });
+
+    // Additional initialization code such as adding Event Listeners goes here
+    FB.login(function(response) {
+            // handle the response
+            }, {scope: 'user_likes,user_photos,friends_photos'});
+  };
+
+  // Load the SDK's source Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+
+
+<?php echo $this->layout()->content; ?>
+
+<footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>&copy; Copyright 2012 Algorithms.io Inc. All Rights Reserved </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer ends -->
+</div>
+
+
+</body>
+</html>
