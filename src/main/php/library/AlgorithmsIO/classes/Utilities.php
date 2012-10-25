@@ -70,7 +70,16 @@ public function convertToCoordinates( $address ){
 //print_r( $returnVal );
 	return $returnVal;
 }
-public function curlPost( $url, $post_params ){
+/*
+* Runs a curl command
+*
+* @input string $url - url for curl command
+* @input array $post_params - array of all the post parameters
+* @input array $headers = array of additional headers
+*
+* @return string - output of curl call
+*/
+public function curlPost( $url, $post_params=null, $headers = null ){
     // Does a post and optional file upload to a given url
     // INTPUT:
     /*
@@ -82,8 +91,16 @@ public function curlPost( $url, $post_params ){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_params);
+        
+        if($post_params != null){
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_params);
+        }
+        
+        // Optionally set header values
+        if( $headers != null )
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
         $result = curl_exec($ch);
 
         if( $result )
