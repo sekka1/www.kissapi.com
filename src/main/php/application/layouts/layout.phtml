@@ -32,12 +32,32 @@
     });
 
     // Additional initialization code such as adding Event Listeners goes here
-    FB.login(function(response) {
-            // handle the response
-            }, {scope: 'user_likes,user_photos,friends_photos'});
+
+    FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+            // the user is logged in and has authenticated your
+            // app, and response.authResponse supplies
+            // the user's ID, a valid access token, a signed
+            // request, and the time the access token 
+            // and signed request each expire
+            var uid = response.authResponse.userID;
+            var accessToken = response.authResponse.accessToken;
+            } else if (response.status === 'not_authorized') {
+            // the user is logged in to Facebook, 
+            // but has not authenticated your app
+            } else {
+            // the user isn't logged in to Facebook.
+
+                FB.login(function(response) {
+                    // handle the response
+                }, {scope: 'user_likes,user_photos,friends_photos'});
+
+            }
+    });
+
   };
 
-  // Load the SDK's source Asynchronously
+// Load the SDK's source Asynchronously
   (function(d){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
      if (d.getElementById(id)) {return;}
