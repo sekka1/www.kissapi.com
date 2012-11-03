@@ -1,21 +1,10 @@
     
-    <!-- FB login stuff -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=APP_ID";
-            fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-
-
     <br/>
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>KissAPI - Photo Collage</h1>
+        <h2><img src="/images/kissapi_logo_final.png"/><br/> Photo Collage</h2>
             <ul>
             <li>Login to Facebook</li>
             <li>Choose your favoriate photos</li>
@@ -23,7 +12,7 @@
             <li>Show the collage to your friends</li>
             <li>Be happy</li>
             </ul>
-        <p><div class="fb-login-button" data-show-faces="true" data-width="400" data-max-rows="2"></div></p>
+		<fb:login-button show-faces="true" width="400" max-rows="1" scope="user_photos,friends_photos"></fb:login-button>
       </div>
 
       <!-- Example row of columns -->
