@@ -53,7 +53,7 @@ class CollageController extends Zend_Controller_Action
             $utilities = new Utilities();
 
             // Make call to get HP auth
-            $url = 'http://pod1.staging.v1.api.algorithms.io/jobs';
+            $url = 'http://v1.api.algorithms.io/jobs';
             $headers = array('authToken: c1a77f12caa5b03ee5654838f1741be0');
             $data['job']['algorithm']['id'] = "33";
             $data['job']['algorithm']['params']['hp_username'] = 'garland';
