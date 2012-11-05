@@ -1,3 +1,4 @@
+
     <div class="row-fluid">
     <form id="generate_collage" method="POST" action="/collage/generate">
 
@@ -14,6 +15,6 @@
     }
 
 ?>
-    <button class="btn btn-large btn-primary" type="button" href="javascript:void(0);" onclick="$('#generate_collage').submit();">Generate Collage</button>
+    <button class="btn btn-large btn-primary" id="button" type="button" href="javascript:void(0);" onclick="$('#generate_collage').submit(); $('#button').button('loading');" data-loading-text="...Generating..." >Generate Collage</button>
     </form>
     </div>

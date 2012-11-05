@@ -50,7 +50,7 @@
 
                 FB.login(function(response) {
                     // handle the response
-                }, {scope: 'user_photos,friends_photos'});
+                }, {scope: 'user_photos,friends_photos,publish_stream'});
 
             }
     });
@@ -65,13 +65,14 @@
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
    }(document));
+
 </script>
 
 
 
 <?php echo $this->layout()->content; ?>
 
-<footer>
+  <footer>
     <div class="footer-inner">
       <div class="footer-left">
         <p>&copy; Copyright 2012 Algorithms.io Inc. All Rights Reserved </p>

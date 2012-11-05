@@ -86,7 +86,15 @@ class CollageController extends Zend_Controller_Action
                 if(json_last_error() == 0){
                     //print_r($responseArray);
                     // Set the colloage png to the view
-                    $this->view->collagePicture = $responseArray['collage']['id_pic'];
+
+		    if( isset( $responseArray['collage'] ) ){
+			if( isset( $responseArray['collage']['id_pic'] ) ){
+	                    	$this->view->collagePicture = $responseArray['collage']['id_pic'];
+				$this->view->didGenerate = true;
+			}else{
+				$this->view->didGenerate = false;
+			}
+		    }
                 }
 
             }else{

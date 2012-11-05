@@ -1,5 +1,54 @@
 <?php
+	$this->collagePicture = 'https://region-a.geo-1.objects.hpcloudsvc.com:443/v1/41738351831371/collage/'.$this->collagePicture;
+?>
 
-echo '<img src="https://region-a.geo-1.objects.hpcloudsvc.com:443/v1/41738351831371/collage/'.$this->collagePicture.'"/>';
+<script>
+
+function postToFacebook(){
+
+	$('#button').button('loading');
+
+    	FB.api('me/photos', 'post', {
+        	//message: 'Collage from www.KissAPI.com',
+        	url: '<?php echo $this->collagePicture; ?>',
+        	}, function (r) {
+            	//alert(JSON.stringify(r));
+	    	$('#button').button('reset');
+        	});
+}
+
+</script>
+	
+	<br/>
+	<div class="container">
+
+		<div class="hero-unit">
+			<a href="/index"><img src="/images/kissapi_logo_final.png"/></a><br/>
+
+<?php
+
+if( $this->didGenerate ){
+
+	echo '<div class="row">';
+
+		echo '<div class="span3"><button class="btn btn-large btn-primary" id="button" type="button" data-loading-text="Posting..." onclick="postToFacebook();">Post to Facebook Wall</button></div>';
+
+		echo '<div class="span3"><form><button class="btn btn-large btn-primary" type="button" href="javascript:void(0);" onClick="window.location.href=\''.$this->collagePicture.'\'">Download Picture</button></form></div>';
+
+		echo '<div class="span3"><a class="btn btn-large btn-primary" href="/collage/photos">Create New Collage</a></div>';
+
+	echo '</div>';
+
+	echo '<div class="row">';
+
+		echo '<div class="span8"><img align="left" src="'.$this->collagePicture.'"/></div>';
+
+	echo '</div>';
+
+}else{
+	echo 'Sorry there was an errory trying to generate a picture.  Please clic back and try again.  Thanks!';
+}
 
 ?>
+
+	</div>
