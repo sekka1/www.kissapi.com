@@ -1,41 +1,169 @@
-    <br/>
-    <div class="container">
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h2><img src="/images/kissapi_logo_final.png"/><br/> Photo Collage</h2>
-            <ul>
+<style>
+
+/*Lets start with the cloud formation rather*/
+
+/*The container will also serve as the SKY*/
+
+*{ margin: 0; padding: 0;}
+
+body {
+	/*To hide the horizontal scroller appearing during the animation*/
+	overflow: hidden;
+}
+
+
+#clouds{
+	padding: 100px 0;
+	position: fixed;
+	z-index: -1;
+	
+}
+
+/*Time to finalise the cloud shape*/
+.cloud {
+	width: 200px; height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	
+	position: relative; 
+}
+
+.cloud:before, .cloud:after {
+	content: '';
+	position: absolute; 
+	background: #fff;
+	width: 100px; height: 80px;
+	position: absolute; top: -15px; left: 10px;
+	
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+	width: 120px; height: 120px;
+	top: -55px; left: auto; right: 15px;
+}
+
+/*Time to animate*/
+.x1 {
+	-webkit-animation: moveclouds 15s linear infinite;
+	-moz-animation: moveclouds 15s linear infinite;
+	-o-animation: moveclouds 15s linear infinite;
+}
+
+/*variable speed, opacity, and position of clouds for realistic effect*/
+.x2 {
+	left: 200px;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 0.6; /*opacity proportional to the size*/
+	
+	/*Speed will also be proportional to the size and opacity*/
+	/*More the speed. Less the time in 's' = seconds*/
+	-webkit-animation: moveclouds 25s linear infinite;
+	-moz-animation: moveclouds 25s linear infinite;
+	-o-animation: moveclouds 25s linear infinite;
+}
+
+.x3 {
+	left: -250px; top: -200px;
+	
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+	
+	-webkit-animation: moveclouds 20s linear infinite;
+	-moz-animation: moveclouds 20s linear infinite;
+	-o-animation: moveclouds 20s linear infinite;
+}
+
+.x4 {
+	left: 470px; top: -250px;
+	
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	transform: scale(0.75);
+	opacity: 0.75; /*opacity proportional to the size*/
+	
+	-webkit-animation: moveclouds 18s linear infinite;
+	-moz-animation: moveclouds 18s linear infinite;
+	-o-animation: moveclouds 18s linear infinite;
+}
+
+.x5 {
+	left: -150px; top: -150px;
+	
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+	
+	-webkit-animation: moveclouds 20s linear infinite;
+	-moz-animation: moveclouds 20s linear infinite;
+	-o-animation: moveclouds 20s linear infinite;
+}
+
+@-webkit-keyframes moveclouds {
+	0% {margin-left: 1400px;}
+	100% {margin-left: -1400px;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: 1400px;}
+	100% {margin-left: -1400px;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: 1400px;}
+	100% {margin-left: -1400px;}
+}
+</style>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+<div id="banner_bg" style="background-image:url('/images/main_bg.png'); background-repeat: repeat-x; height: 517px; width: 100%; position: absolute; z-index: -2;"></div>
+	<div id="clouds">
+	<div class="cloud x1"></div>
+	<!-- Time for multiple clouds to dance around -->
+	<div class="cloud x2"></div>
+	<div class="cloud x3"></div>
+	<div class="cloud x4"></div>
+	<div class="cloud x5"></div>
+
+	</div>
+<div class="container">
+      <div class="row-fluid">
+        <div class="span6"><div style="position: relative; top: 150px;"><img src="/images/kissapi_logo_final.png"/><strong style="padding-left: 166px; color: #e20060; font-size: 32px; font-family: 'Lato','serif';">create fun stuff</strong>
+	
+		<br><br><div style="padding-left: 200px;"><fb:login-button show-faces="true" width="200" max-rows="1" scope="user_photos,friends_photos,publish_stream"></fb:login-button><br/><br/>
+		<div class="fb-like" data-href="http://www.kissapi.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div></div>
+
+		</div>
+	</div>
+        <div class="span6" style="height: 517px;">
+          <div style="position: relative; top: 150px;"><h2>Create A Photo Collage</h2>
+	    <ul>
             <li>Login to Facebook</li>
             <li>Choose your favorite photos</li>
             <li>Wait and watch the magic happen</li>
             <li>Show the collage to your friends</li>
             <li>Be happy</li>
             </ul>
-		<fb:login-button show-faces="true" width="400" max-rows="1" scope="user_photos,friends_photos,publish_stream"></fb:login-button><br/><br/>
-		<div class="fb-like" data-href="http://www.kissapi.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
-      </div>
 
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-          <h2>Collage</h2>
-            <img src="https://region-a.geo-1.objects.hpcloudsvc.com:443/v1/41738351831371/collage/b2a5f67bfb84f961c487d06783885c6b92a24fa3"/>
-            <p>Easily create collages of your favorite photos from Facebook and then repost them onto your wall for everyone to enjoy.  This is using HP's awesome photo colloage API but you dont have to learn it to use it.  Just click here!</p>
-          <p><a class="btn" href="/collage/photos">Make Me a Collage! &raquo;</a></p>
+          <p><a class="btn btn-large" href="/collage/photos">Get Started &raquo;</a></p>
+	  </div>
 
-
-        </div>
-        <div class="span4">
-          <h2>Locating Friends</h2>
-            <p>Every have the problem of meeting up with a friend or a group of friends and you guys are always texting or calling each other to see where everyone is?  This app is here to solve this very problem.  You just have to give each of your friend a URL via text, email or another other means and from there everyone would be plotted on a map so you guys can find each other even if you guys are still on the move.</p>
-          <p><a class="btn" href="#">Coming Soon &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Games</h2>
-            <p>Coming soon, we are making some very awesome Javascript games in a 3D world where all your friends can join, that will blow your mind away.</p>
-          <p><a class="btn" href="#">Coming Soon &raquo;</a></p>
         </div>
       </div>
 
-      <hr>
 
+</div>
+	<div style="background-color: #2899fe; width: 100%; bottom-border: 1px solid #2594f7"></div>

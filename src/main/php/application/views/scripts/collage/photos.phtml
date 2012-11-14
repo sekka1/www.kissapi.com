@@ -1,32 +1,204 @@
+
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
           Select pictures you want in the collage, then click this button: 
-	  <button class="btn btn-large btn-primary" id="button" type="button" href="javascript:void(0);" onclick="$('#generate_collage').submit(); $('#button').button('loading');" data-loading-text="...Generating..." >Generate Collage</button>
-        </div>
+	  <button class="btn btn-large btn-primary" id="button" type="button" href="javascript:void(0);" onclick="$('#generate_collage').submit(); $('#button').button('loading'); $('#genphoto').show();" data-loading-text="...Generating..." >Generate Collage</button>
       </div>
-    </div>
+</div>
+    
+<div id="genphoto" style="display: none; position: absolute; background-color: #FFFFFF; z-index: 100; height: 100%; width: 100%;">
+<style>
+#bowlG{
+position:relative;
+top: 30%;
+left: 40%; 
+width:128px;
+height:128px;
+}
 
-    <div class="row-fluid">
-    <form id="generate_collage" method="POST" action="/collage/generate">
+#bowl_ringG{
+position:absolute;
+width:128px;
+height:128px;
+border:11px solid #D923A8;
+-moz-border-radius:128px;
+-webkit-border-radius:128px;
+border-radius:128px;
+}
 
+.ball_holderG{
+position:absolute;
+width:34px;
+height:128px;
+left:47px;
+top:0px;
+-webkit-animation-name:ball_moveG;
+-webkit-animation-duration:1.6s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-timing-function:linear;
+-moz-animation-name:ball_moveG;
+-moz-animation-duration:1.6s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-timing-function:linear;
+-o-animation-name:ball_moveG;
+-o-animation-duration:1.6s;
+-o-animation-iteration-count:infinite;
+-o-animation-timing-function:linear;
+-ms-animation-name:ball_moveG;
+-ms-animation-duration:1.6s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-timing-function:linear;
+}
+
+.ballG{
+position:absolute;
+left:0px;
+top:-30px;
+width:51px;
+height:51px;
+background:#48C3F0;
+-moz-border-radius:43px;
+-webkit-border-radius:43px;
+border-radius:43px;
+}
+
+@-webkit-keyframes ball_moveG{
+0%{
+-webkit-transform:rotate(360deg)}
+
+100%{
+-webkit-transform:rotate(0deg)}
+
+}
+
+@-moz-keyframes ball_moveG{
+0%{
+-moz-transform:rotate(360deg)}
+
+100%{
+-moz-transform:rotate(0deg)}
+
+}
+
+@-o-keyframes ball_moveG{
+0%{
+-o-transform:rotate(360deg)}
+
+100%{
+-o-transform:rotate(0deg)}
+
+}
+
+@-ms-keyframes ball_moveG{
+0%{
+-ms-transform:rotate(360deg)}
+
+100%{
+-ms-transform:rotate(0deg)}
+
+}
+
+</style>
+<div id="bowlG">
+Hold On A Second While We Work! This may take a few minutes!
+<div id="bowl_ringG">
+<div class="ball_holderG">
+<div class="ballG">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid fill">
+<form id="generate_collage" method="POST" action="/collage/generate">
+<style>
+#gallery-wrap{margin: 0 auto; border: 1px solid #BBBBBB; border-radius: 10px;-moz-border-radius: 10px; width: 90%; overflow: hidden; position: relative; top: 50px; background-color: #000000;}
+#gallery li{float: left; list-style: none; margin: 0 20px 15px 0; border: 1px solid #BBBBBB; border-radius: 3px;-moz-border-radius: 3px; background-color: #bbe8fe; height: 170px;}
+#gallery li a img{border: 4px solid #40331b; }
+#gallery-prev{position: relative; z-index: 10; float: left; display: block; height: 180px; }
+#gallery-next{position: relative; z-index: 10; float: right; height: 180px; }
+#gallery{ overflow: hidden; position: absolute; padding: 10px; width: 500px;}
+#gallery-main{overflow:hidden;}
+#large_photo img {border: 5px solid #000000; min-width: 400px; border-radius: 6px;-moz-border-radius: 6px; min-height: 300px; background-color: #FFFFFF;
+ margin: 0 auto;}
+html, body { 
+background-image: -ms-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
+background-image: -moz-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
+background-image: -o-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FD619F), color-stop(.5, #FFFFFF), color-stop(1, #00A3EF));
+background-image: -webkit-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
+background-image: linear-gradient(to bottom, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+width: 100%;
+height: 100%;           /*min-height hack*/
+ min-height: 100%;
+}
+
+</style>
+<div id="gallery-wrap">
+<div id="gallery-prev" class="btn"><<</div>
+<div id="gallery-main">
+<ul id="gallery">
 <?php
     // Display the user's images
-
+	$count = 0;
     foreach( $this->mePhotos['data'] as $aPic ){
-
-        echo '<div class="span4">';
-        echo '<img src="' . $aPic['images'][4]['source'] . '"/><br/>';
-//        echo '<input type="checkbox" name="pic[]" value="'.$aPic['id'].'"> Select<br>';
-        echo '<input type="checkbox" name="pic[]" value="'.$aPic['images'][4]['source'] .'"> Select<br>';
-        echo '</div>';
+	$count++;
+        echo '<li onclick="jQuery(\'#large_photo_src\').attr({\'src\':\'' . $aPic['images'][4]['source'] . '\'})">';
+        echo '<img class="img-rounded" id="photoSrc' . $count . '" style="max-height: 150px;" src="' . $aPic['images'][4]['source'] . '"/>';
+//        echo '<div style="align: bottom;"><input type="checkbox" name="pic[]" value="'.$aPic['id'].'"> Select</div>';
+        echo '<div style="text-align: center;"><input id="photo' . $count . '" type="checkbox" name="pic[]" value="'.$aPic['images'][4]['source'] .'"> Select Photo<br></div>';
+        echo '</li>';
     }
 
 ?>
+</ul>
+</div>
+<div id="gallery-next" class="btn">>></div>
+</div>
     </form>
-    </div>
+<br><br><br>
+<table border="0" width="100%"><tr><td></td>
+<td align="center">
+<div id="large_photo"><img src="" class="img-rounded" id="large_photo_src"></div>
+</td><td></td></tr></table>
+</div>
+<br><br><br>
+<script type="text/javascript">
+$(window).load(function(){ 
+	
+	// Gallery
+	if(jQuery("#gallery").length){
+	
+		// Variables aren't use properly due to Webkit
+		var totalImages = jQuery("#gallery > li").length, 
+			imageWidth = jQuery("#gallery > li:first").outerWidth(true),
+			totalWidth = imageWidth * totalImages,
+			visibleImages = Math.round(jQuery("#gallery-wrap").width() / imageWidth),
+			visibleWidth = visibleImages * imageWidth,
+			stopPosition = (visibleWidth - totalWidth);
+		jQuery("#gallery").width(totalWidth);
+		
+		jQuery("#gallery-prev").click(function(){
+			if(jQuery("#gallery").position().left < 0 && !jQuery("#gallery").is(":animated")){
+				jQuery("#gallery").animate({left : "+=" + imageWidth + "px"});
+			}
+			return false;
+		});
+		jQuery('#large_photo_src').attr({'src': document.getElementById('photoSrc1').src});	
+		jQuery("#gallery-next").click(function(){
+			if(jQuery("#gallery").position().left > stopPosition && !jQuery("#gallery").is(":animated")){
+				jQuery("#gallery").animate({left : "-=" + imageWidth + "px"});
+			}
+			return false;
+		});
+	}
+		
+});
+</script>
