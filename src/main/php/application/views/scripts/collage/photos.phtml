@@ -6,8 +6,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          Select pictures you want in the collage, then click this button: 
-	  <button class="btn btn-large btn-primary" id="button" type="button" href="javascript:void(0);" onclick="$('#generate_collage').submit(); $('#button').button('loading'); $('#genphoto').show();" data-loading-text="...Generating..." >Generate Collage</button>
+          Select pictures you want in the collage, then click this button:
+	  <button class="btn btn-large btn-primary" id="button" type="button" href="javascript:void(0);" onclick="$('#generate_collage').submit(); $('#button').button('loading'); $('#genphoto').show();" data-loading-text="...Generating..." >Generate Collage</button><br />
+	  	  <br/>For best results, only select 5 photos at a time.
       </div>
 </div>
     
@@ -153,19 +154,18 @@ height: 100%;           /*min-height hack*/
 
 		echo '<span class="image-checkbox-container">';
 		echo '<input type="checkbox" name="pic[]" value="'.$aPic['images'][4]['source'] .'" />';
-		echo '<img class="lazy" data-original="'.$aPic['images'][6]['source'].'" src="/images/grey.gif">';
-		echo '</span';
+		echo '<img class="lazy" data-original="'.$aPic['images'][6]['source'].'" src="/images/grey.gif"/>';
+		echo '</span>';
 	}
 
 
 ?>
 
-
     </form>
 
 <script type="text/javascript">
+    $("img.lazy").show().lazyload();
 	$("img.lazy").lazyload();
-
 
 $('.image-checkbox-container img').live('click', function(){
     if(!$(this).prev('input[type="checkbox"]').prop('checked')){
