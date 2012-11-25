@@ -115,17 +115,10 @@ Hold On A Second While We Work! This may take a few minutes!
 </div>
 </div>
 <div class="container-fluid fill">
+
 <form id="generate_collage" method="POST" action="/collage/generate">
+
 <style>
-#gallery-wrap{margin: 0 auto; border: 1px solid #BBBBBB; border-radius: 10px;-moz-border-radius: 10px; width: 90%; overflow: hidden; position: relative; top: 50px; background-color: #000000;}
-#gallery li{float: left; list-style: none; margin: 0 20px 15px 0; border: 1px solid #BBBBBB; border-radius: 3px;-moz-border-radius: 3px; background-color: #bbe8fe; height: 170px;}
-#gallery li a img{border: 4px solid #40331b; }
-#gallery-prev{position: relative; z-index: 10; float: left; display: block; height: 180px; }
-#gallery-next{position: relative; z-index: 10; float: right; height: 180px; }
-#gallery{ overflow: hidden; position: absolute; padding: 10px; width: 500px;}
-#gallery-main{overflow:hidden;}
-#large_photo img {border: 5px solid #000000; min-width: 400px; border-radius: 6px;-moz-border-radius: 6px; min-height: 300px; background-color: #FFFFFF;
- margin: 0 auto;}
 html, body { 
 background-image: -ms-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
 background-image: -moz-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
@@ -140,65 +133,49 @@ height: 100%;           /*min-height hack*/
  min-height: 100%;
 }
 
+
+.image-checkbox-container input[type="checkbox"]{
+    display: none;
+}
+
+.image-checkbox-container img{
+    border: 0;
+    margin: 4px;
+}
+
 </style>
-<div id="gallery-wrap">
-<div id="gallery-prev" class="btn"><<</div>
-<div id="gallery-main">
-<ul id="gallery">
+
+
 <?php
-    // Display the user's images
+	// Display the user's images
 	$count = 0;
-    foreach( $this->mePhotos['data'] as $aPic ){
-	$count++;
-        echo '<li onclick="jQuery(\'#large_photo_src\').attr({\'src\':\'' . $aPic['images'][4]['source'] . '\'})">';
-        echo '<img class="img-rounded" id="photoSrc' . $count . '" style="max-height: 150px;" src="' . $aPic['images'][4]['source'] . '"/>';
-//        echo '<div style="align: bottom;"><input type="checkbox" name="pic[]" value="'.$aPic['id'].'"> Select</div>';
-        echo '<div style="text-align: center;"><input id="photo' . $count . '" type="checkbox" name="pic[]" value="'.$aPic['images'][4]['source'] .'"> Select Photo<br></div>';
-        echo '</li>';
-    }
+	foreach( $this->AllPhotos['data'] as $aPic ){
+
+		echo '<span class="image-checkbox-container">';
+		echo '<input type="checkbox" name="pic[]" value="'.$aPic['images'][4]['source'] .'" />';
+		echo '<img class="lazy" data-original="'.$aPic['images'][6]['source'].'" src="/images/grey.gif">';
+		echo '</span';
+	}
+
 
 ?>
-</ul>
-</div>
-<div id="gallery-next" class="btn">>></div>
-</div>
+
+
     </form>
-<br><br><br>
-<table border="0" width="100%"><tr><td></td>
-<td align="center">
-<div id="large_photo"><img src="" class="img-rounded" id="large_photo_src"></div>
-</td><td></td></tr></table>
-</div>
-<br><br><br>
+
 <script type="text/javascript">
-$(window).load(function(){ 
-	
-	// Gallery
-	if(jQuery("#gallery").length){
-	
-		// Variables aren't use properly due to Webkit
-		var totalImages = jQuery("#gallery > li").length, 
-			imageWidth = jQuery("#gallery > li:first").outerWidth(true),
-			totalWidth = imageWidth * totalImages,
-			visibleImages = Math.round(jQuery("#gallery-wrap").width() / imageWidth),
-			visibleWidth = visibleImages * imageWidth,
-			stopPosition = (visibleWidth - totalWidth);
-		jQuery("#gallery").width(totalWidth);
-		
-		jQuery("#gallery-prev").click(function(){
-			if(jQuery("#gallery").position().left < 0 && !jQuery("#gallery").is(":animated")){
-				jQuery("#gallery").animate({left : "+=" + imageWidth + "px"});
-			}
-			return false;
-		});
-		jQuery('#large_photo_src').attr({'src': document.getElementById('photoSrc1').src});	
-		jQuery("#gallery-next").click(function(){
-			if(jQuery("#gallery").position().left > stopPosition && !jQuery("#gallery").is(":animated")){
-				jQuery("#gallery").animate({left : "-=" + imageWidth + "px"});
-			}
-			return false;
-		});
-	}
-		
+	$("img.lazy").lazyload();
+
+
+$('.image-checkbox-container img').live('click', function(){
+    if(!$(this).prev('input[type="checkbox"]').prop('checked')){
+        $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked','checked');
+        this.style.border = '4px solid #38A';
+        this.style.margin =' 0';
+    }else{
+        $(this).prev('input[type="checkbox"]').prop('checked', false).removeAttr('checked');
+        this.style.border = '0';
+        this.style.margin = '4px';
+    }
 });
 </script>

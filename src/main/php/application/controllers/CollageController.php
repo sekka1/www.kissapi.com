@@ -3,6 +3,9 @@
 class CollageController extends Zend_Controller_Action
 {
     private $facebook;
+    private $HPCloud_collage_location = 'https://region-a.geo-1.objects.hpcloudsvc.com:443/v1/41738351831371/collage/';
+    private $local_file_location = '/var/www/www.kissapi.com/src/main/php/public/collages_photos/';
+    private $local_pic_url;
 
     public function init()
     {
@@ -15,6 +18,8 @@ class CollageController extends Zend_Controller_Action
         $config['fileUpload'] = false; // optional
 
         $this->facebook = new Facebook($config);
+
+	$this->local_pic_url = 'http://'.$_SERVER['HTTP_HOST'] . '/collages_photos/';
     }
     public function preDispatch(){
 
@@ -39,8 +44,45 @@ class CollageController extends Zend_Controller_Action
     }
     public function photosAction()
     {
-        $response = $this->facebook->api('/me/photos');        
+	// Combine Various Albums into one array
+        $this->view->AllPhotos = array();
+        $this->view->AllPhotos['data'] = array();
+
+	// Photo's user is tagged in
+        $response = $this->facebook->api('/me/photos');
         $this->view->mePhotos = $response;
+	$this->addPhotosToOutputArray($response);
+
+	$allAlbums = $this->getAllFBPhotoAlbums();
+//print_r($allAlbums);
+
+	// Get all Album pictures and put it into the output array
+	$allAlbumsIDs = $this->getAllAlbumIDs($allAlbums['data']);
+
+	foreach($allAlbumsIDs as $anAlbum){
+		$response = $this->facebook->api('/'.$anAlbum.'/photos');
+		$this->addPhotosToOutputArray($response);
+	}
+
+/*
+	// Get TimeLine Album
+	$anAlbum = $this->getAlbumByName($allAlbums, 'Timeline Photos');	
+	if( count($anAlbum) > 0 ){
+		// Get this albums content
+		$response = $this->facebook->api('/'.$anAlbum['id'].'/photos');
+		$this->addPhotosToOutputArray($response);
+	}
+
+	// Get Mobile Uploads album
+	$anAlbum = $this->getAlbumByName($allAlbums, 'Mobile Uploads');      
+        if( count($anAlbum) > 0 ){
+                // Get this albums content
+                $response = $this->facebook->api('/'.$anAlbum['id'].'/photos');
+		$this->addPhotosToOutputArray($response);
+        }
+*/
+//print_r( $this->view->AllPhotos);
+
     }
     public function generateAction(){
 
@@ -89,8 +131,14 @@ class CollageController extends Zend_Controller_Action
 
 		    if( isset( $responseArray['collage'] ) ){
 			if( isset( $responseArray['collage']['id_pic'] ) ){
-	                    	$this->view->collagePicture = $responseArray['collage']['id_pic'];
+	                    	$this->view->collagePicture = $this->local_pic_url.$responseArray['collage']['id_pic'];
 				$this->view->didGenerate = true;
+
+				// Save File locally
+				$picture = file_get_contents($this->HPCloud_collage_location.$responseArray['collage']['id_pic']);
+				$fp = fopen($this->local_file_location.$responseArray['collage']['id_pic'], 'w+');
+				fwrite($fp, $picture);
+				fclose($fp);
 			}else{
 				$this->view->didGenerate = false;
 			}
@@ -104,5 +152,36 @@ class CollageController extends Zend_Controller_Action
             // Set a default pic
             $this->view->collagePicture = 'b2a5f67bfb84f961c487d06783885c6b92a24fa3';
         }
+    }
+    private function getAllFBPhotoAlbums(){
+
+	$response = $this->facebook->api('/me/albums');
+
+	return $response;
+    }
+    private function getAlbumByName($albumArray, $albumName){
+
+	$foundAlbumArray = array();
+
+	foreach( $albumArray['data'] as $anAlbum ){
+		if( $anAlbum['name'] == $albumName )
+			$foundAlbumArray = $anAlbum;
+	}
+	return $foundAlbumArray;
+    }
+    private function getAllAlbumIDs($albumArray){
+
+	$albumIDs = array();
+	
+	foreach($albumArray as $anAlbum){
+		array_push($albumIDs, $anAlbum['id']);
+	}
+	return $albumIDs;
+    }
+    private function addPhotosToOutputArray($fbPhotoData){
+	
+	foreach( $fbPhotoData['data'] as $aPic){
+		array_push($this->view->AllPhotos['data'], $aPic);
+	}
     }
 }

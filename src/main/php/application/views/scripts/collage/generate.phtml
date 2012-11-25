@@ -1,5 +1,5 @@
 <?php
-	$this->collagePicture = 'https://region-a.geo-1.objects.hpcloudsvc.com:443/v1/41738351831371/collage/'.$this->collagePicture;
+	//$this->collagePicture = 'https://region-a.geo-1.objects.hpcloudsvc.com:443/v1/41738351831371/collage/'.$this->collagePicture;
 ?>
 
 <script>
@@ -44,6 +44,84 @@ if( $this->didGenerate ){
 		echo '<div class="span8"><img align="left" src="'.$this->collagePicture.'"/></div>';
 
 	echo '</div>';
+
+
+	/*
+	*
+	* Output Zazzle stuff
+	*/
+	echo '<h2>You can purchase any of these items below with this collage on it:</h2>';
+
+	// Row 1
+	echo '<div class="row">';
+	
+        // Mug
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=168332117262046230&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/mug.png"/></a>';
+	echo '</div>';
+
+        // Post Card
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=239503090375861847&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/post_card.png"/></a>';
+	echo '</div>';
+
+        // Coffee Cup
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=168396985052952821&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/coffee_cup.png"/></a>';
+	echo '</div>';
+
+	echo '</div><br/>';
+
+	// Row 2
+	echo '<div class="row">';
+
+        // Plate
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=115294251013111988&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/plate.png"/></a>';
+	echo '</div>';
+
+        // Heart Ornament
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=175485701627175694&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/heart_ornament.png"/></a>';
+	echo '</div>';
+
+        // Apron
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=154917594477311042&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/apron.png"/></a>';
+	echo '</div>';
+
+	echo '</div><br/>';
+	
+	// Row 3
+	echo '<div class="row">';
+
+        // Heart Sticker
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=217498737315455579&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/heart_sticker.png"/></a>';
+	echo '</div>';
+
+        // Ornament
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=175518316784278377&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/ornament.png"/></a>';
+	echo '</div>';
+
+        // Mouse Pad
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=144644884974170801&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/mouse_pad.png"/></a>';
+	echo '</div>';
+
+	echo '</div><br/>';
+
+	// Row 4
+	echo '<div class="row">';
+
+        // Water Bottle
+	echo '<div class="span2">';
+        echo '<a onClick="window.open(\'http://www.zazzle.com/api/create/at-238550398363477642?rf=238550398363477642&ax=Linkover&pd=126879661920885343&fwd=DesignTool&tc=&ic=&coverimage='.urlencode($this->collagePicture).'&covertext=\')"><img width="150" height="150" src="/images/zazzle/water_bottle.png"/></a>';
+	echo '</div>';
+
+	echo '</div><br/>';
+
 
 }else{
 	echo 'Sorry there was an errory trying to generate a picture.  Please clic back and try again.  Thanks!';
