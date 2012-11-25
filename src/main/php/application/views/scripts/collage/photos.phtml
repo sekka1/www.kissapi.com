@@ -163,10 +163,22 @@ height: 100%;           /*min-height hack*/
 
     </form>
 
-<script type="text/javascript">
-    $("img.lazy").show().lazyload();
-	$("img.lazy").lazyload();
 
+<script type="text/javascript">
+    //$("img.lazy").show().lazyload({ threshold : 200 });
+	//$("img.lazy").lazyload();
+      //$(function() {
+      //    $("img").lazyload({ threshold : 200 });
+      //});
+      
+jQuery(document).ready(function($){
+	if (navigator.platform == "iPad") return;
+	$("img.lazy").show().lazyload({
+		placeholder : "/images/grey.gif",
+		effect : "fadeIn"
+	});
+});
+      
 $('.image-checkbox-container img').live('click', function(){
     if(!$(this).prev('input[type="checkbox"]').prop('checked')){
         $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked','checked');
@@ -178,4 +190,6 @@ $('.image-checkbox-container img').live('click', function(){
         this.style.margin = '4px';
     }
 });
+
+
 </script>
