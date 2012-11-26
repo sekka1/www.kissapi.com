@@ -1,3 +1,13 @@
+<style>
+	.image-checkbox-container input[type="checkbox"]{
+    	display: none;
+	}
+
+	.image-checkbox-container img{
+    	border: 0;
+    	margin: 4px;
+	}
+</style>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -11,7 +21,9 @@
 	  	  <br/>For best results, only select 5 photos at a time.
       </div>
 </div>
-    
+<br/><br/>
+
+<!--Overlay when generating-->
 <div id="genphoto" style="display: none; position: absolute; background-color: #FFFFFF; z-index: 100; height: 100%; width: 100%;">
 <style>
 #bowlG{
@@ -115,36 +127,13 @@ Hold On A Second While We Work! This may take a few minutes!
 </div>
 </div>
 </div>
-<div class="container-fluid fill">
+
+
+
+
+
 
 <form id="generate_collage" method="POST" action="/collage/generate">
-
-<style>
-html, body { 
-background-image: -ms-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
-background-image: -moz-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
-background-image: -o-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FD619F), color-stop(.5, #FFFFFF), color-stop(1, #00A3EF));
-background-image: -webkit-linear-gradient(top, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
-background-image: linear-gradient(to bottom, #FD619F 0%, #FFFFFF 50%, #00A3EF 100%);
-background-repeat: no-repeat;
-background-size: 100% 100%;
-width: 100%;
-height: 100%;           /*min-height hack*/
- min-height: 100%;
-}
-
-
-.image-checkbox-container input[type="checkbox"]{
-    display: none;
-}
-
-.image-checkbox-container img{
-    border: 0;
-    margin: 4px;
-}
-
-</style>
 
 
 <?php
@@ -154,32 +143,25 @@ height: 100%;           /*min-height hack*/
 
 		echo '<span class="image-checkbox-container">';
 		echo '<input type="checkbox" name="pic[]" value="'.$aPic['images'][4]['source'] .'" />';
-		echo '<img class="lazy" data-original="'.$aPic['images'][6]['source'].'" src="/images/grey.gif"/>';
+		echo '<img class="lazy" data-original="'.$aPic['images'][6]['source'].'" src="/images/grey.gif" width="180" heigh="180"/>';
 		echo '</span>';
 	}
 
 
 ?>
 
-    </form>
+</form>
 
-
-<script type="text/javascript">
-    //$("img.lazy").show().lazyload({ threshold : 200 });
-	//$("img.lazy").lazyload();
-      //$(function() {
-      //    $("img").lazyload({ threshold : 200 });
-      //});
-      
-jQuery(document).ready(function($){
-	if (navigator.platform == "iPad") return;
-	$("img.lazy").show().lazyload({
-		placeholder : "/images/grey.gif",
-		effect : "fadeIn"
+<script>
+	jQuery(document).ready(function($){
+		if (navigator.platform == "iPad") return;
+		$("img.lazy").show().lazyload({
+			placeholder : "/images/grey.gif",
+			effect : "fadeIn"
+		});
 	});
-});
-      
-$('.image-checkbox-container img').live('click', function(){
+	
+	$('.image-checkbox-container img').live('click', function(){
     if(!$(this).prev('input[type="checkbox"]').prop('checked')){
         $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked','checked');
         this.style.border = '4px solid #38A';
@@ -190,6 +172,4 @@ $('.image-checkbox-container img').live('click', function(){
         this.style.margin = '4px';
     }
 });
-
-
 </script>
